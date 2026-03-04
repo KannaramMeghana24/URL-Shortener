@@ -21,24 +21,23 @@ app.get("/", (req, res) => {
 });
 
 // ============================
+// Test Route (for debugging)
+// ============================
+app.get("/test", (req, res) => {
+  res.send("API routes working");
+});
+
+// ============================
 // API Routes
 // ============================
-// You can access routes using:
-// /all
-// /shorten
-// /delete/:id
-// /:shortCode
 app.use("/", require("./routes/urlRoutes"));
-
-// OPTIONAL: If you want /api/all etc.
-// app.use("/api", require("./routes/urlRoutes"));
-
 
 // ============================
 // Start Server + MongoDB
 // ============================
 const startServer = async () => {
   try {
+
     if (!process.env.MONGO_URI) {
       console.error("MONGO_URI is missing in environment variables");
       process.exit(1);
