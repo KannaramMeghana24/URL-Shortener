@@ -5,23 +5,45 @@ require("dotenv").config();
 
 const app = express();
 
+// ============================
 // Middleware
+// ============================
 app.use(cors({
   origin: "*"
 }));
 app.use(express.json());
 
-// Root Route (health check)
+// ============================
+// Health Check Route
+// ============================
 app.get("/", (req, res) => {
   res.send("URL Shortener Backend is running 🚀");
 });
 
-// Routes
+// ============================
+// API Routes
+// ============================
+// You can access routes using:
+// /all
+// /shorten
+// /delete/:id
+// /:shortCode
 app.use("/", require("./routes/urlRoutes"));
 
-// MongoDB Connection
+// OPTIONAL: If you want /api/all etc.
+// app.use("/api", require("./routes/urlRoutes"));
+
+
+// ============================
+// Start Server + MongoDB
+// ============================
 const startServer = async () => {
   try {
+    if (!process.env.MONGO_URI) {
+      console.error("MONGO_URI is missing in environment variables");
+      process.exit(1);
+    }
+
     await mongoose.connect(process.env.MONGO_URI);
     console.log("MongoDB Connected");
 
@@ -34,6 +56,7 @@ const startServer = async () => {
   } catch (error) {
     console.error("MongoDB connection failed:");
     console.error(error);
+    process.exit(1);
   }
 };
 
