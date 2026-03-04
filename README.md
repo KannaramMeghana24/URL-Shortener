@@ -71,21 +71,29 @@ Redirect System
 
 ### Tech Stack
 
-Frontend
+Frontend:
+
 React
+
 Axios
+
 Vite
+
 CSS
 
-Backend
+Backend:
+
 Node.js
+
 Express.js
 
-Database
+Database:
+
 MongoDB Atlas
+
 Mongoose
 
-Deployment
+Deployment:
 Vercel (Frontend)
 Render (Backend)
 
