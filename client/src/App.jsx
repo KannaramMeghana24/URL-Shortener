@@ -2,13 +2,15 @@ import { useState } from "react";
 import axios from "axios";
 
 function App() {
+  const API = "https://url-shortener-backend-pme4.onrender.com";
+
   const [url, setUrl] = useState("");
   const [customAlias, setCustomAlias] = useState("");
   const [shortUrl, setShortUrl] = useState("");
 
   const [urls, setUrls] = useState([]);
   const [showDashboard, setShowDashboard] = useState(false);
-  const [searchTerm, setSearchTerm] = useState(""); // 🔎 Search state
+  const [searchTerm, setSearchTerm] = useState("");
 
   // 🔹 Shorten URL
   const handleSubmit = async () => {
@@ -18,7 +20,7 @@ function App() {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/shorten", {
+      const res = await axios.post(`${API}/shorten`, {
         originalUrl: url,
         customAlias: customAlias
       });
@@ -27,6 +29,7 @@ function App() {
       setUrl("");
       setCustomAlias("");
       setShowDashboard(false);
+
     } catch (err) {
       alert(err.response?.data?.error || "Error shortening URL");
     }
@@ -41,10 +44,10 @@ function App() {
   // 🔹 Fetch Analytics
   const fetchUrls = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/all");
+      const res = await axios.get(`${API}/all`);
       setUrls(res.data);
       setShowDashboard(true);
-      setSearchTerm(""); // Reset search when loading dashboard
+      setSearchTerm("");
     } catch (error) {
       alert("Error fetching analytics");
     }
@@ -53,7 +56,7 @@ function App() {
   // 🗑️ Delete URL
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/delete/${id}`);
+      await axios.delete(`${API}/delete/${id}`);
       setUrls(urls.filter((item) => item._id !== id));
     } catch (error) {
       alert("Error deleting URL");
@@ -129,7 +132,7 @@ function App() {
         <div style={{ marginTop: "40px" }}>
           <h2>Analytics Dashboard</h2>
 
-          {/* 🔎 Search Input */}
+          {/* 🔎 Search */}
           <input
             type="text"
             placeholder="Search by URL or short code..."
@@ -156,12 +159,8 @@ function App() {
             <tbody>
               {urls
                 .filter((item) =>
-                  item.originalUrl
-                    .toLowerCase()
-                    .includes(searchTerm.toLowerCase()) ||
-                  item.shortCode
-                    .toLowerCase()
-                    .includes(searchTerm.toLowerCase())
+                  item.originalUrl.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  item.shortCode.toLowerCase().includes(searchTerm.toLowerCase())
                 )
                 .map((item) => (
                   <tr key={item._id}>
@@ -171,7 +170,7 @@ function App() {
 
                     <td>
                       <a
-                        href={`http://localhost:5000/${item.shortCode}`}
+                        href={`${API}/${item.shortCode}`}
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -200,6 +199,7 @@ function App() {
                         Delete
                       </button>
                     </td>
+
                   </tr>
                 ))}
             </tbody>
