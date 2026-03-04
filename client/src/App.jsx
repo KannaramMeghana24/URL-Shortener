@@ -1,9 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 
-function App() {
-  const API = "https://url-shortener-backend-pme4.onrender.com";
+const API = "https://url-shortener-backend-pme4.onrender.com";
 
+function App() {
   const [url, setUrl] = useState("");
   const [customAlias, setCustomAlias] = useState("");
   const [shortUrl, setShortUrl] = useState("");
@@ -11,6 +11,7 @@ function App() {
   const [urls, setUrls] = useState([]);
   const [showDashboard, setShowDashboard] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(false);
 
   // 🔹 Shorten URL
   const handleSubmit = async () => {
@@ -20,6 +21,8 @@ function App() {
     }
 
     try {
+      setLoading(true);
+
       const res = await axios.post(`${API}/shorten`, {
         originalUrl: url,
         customAlias: customAlias
@@ -31,11 +34,14 @@ function App() {
       setShowDashboard(false);
 
     } catch (err) {
-      alert(err.response?.data?.error || "Error shortening URL");
+      console.error(err);
+      alert("Server error. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
-  // 🔹 Copy Function
+  // 🔹 Copy Short URL
   const handleCopy = () => {
     navigator.clipboard.writeText(shortUrl);
     alert("Copied to clipboard!");
@@ -44,12 +50,18 @@ function App() {
   // 🔹 Fetch Analytics
   const fetchUrls = async () => {
     try {
+      setLoading(true);
+
       const res = await axios.get(`${API}/all`);
       setUrls(res.data);
       setShowDashboard(true);
       setSearchTerm("");
+
     } catch (error) {
+      console.error(error);
       alert("Error fetching analytics");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -59,6 +71,7 @@ function App() {
       await axios.delete(`${API}/delete/${id}`);
       setUrls(urls.filter((item) => item._id !== id));
     } catch (error) {
+      console.error(error);
       alert("Error deleting URL");
     }
   };
@@ -73,7 +86,7 @@ function App() {
         placeholder="Enter long URL"
         value={url}
         onChange={(e) => setUrl(e.target.value)}
-        style={{ width: "300px", padding: "8px" }}
+        style={{ width: "320px", padding: "10px" }}
       />
 
       <br /><br />
@@ -84,16 +97,21 @@ function App() {
         placeholder="Custom alias (optional)"
         value={customAlias}
         onChange={(e) => setCustomAlias(e.target.value)}
-        style={{ width: "300px", padding: "8px" }}
+        style={{ width: "320px", padding: "10px" }}
       />
 
       <br /><br />
 
       {/* Buttons */}
-      <div style={{ marginTop: "10px" }}>
-        <button onClick={handleSubmit}>Shorten</button>
+      <div>
+        <button onClick={handleSubmit} disabled={loading}>
+          {loading ? "Processing..." : "Shorten"}
+        </button>
 
-        <button onClick={fetchUrls} style={{ marginLeft: "10px" }}>
+        <button
+          onClick={fetchUrls}
+          style={{ marginLeft: "10px" }}
+        >
           View Analytics
         </button>
       </div>
@@ -102,7 +120,7 @@ function App() {
       {shortUrl && (
         <div
           style={{
-            marginTop: "20px",
+            marginTop: "25px",
             padding: "15px",
             backgroundColor: "#e6f0ff",
             borderRadius: "8px",
@@ -110,7 +128,8 @@ function App() {
           }}
         >
           <strong>Shortened URL:</strong>
-          <br />
+
+          <br /><br />
 
           <a
             href={shortUrl}
@@ -129,10 +148,10 @@ function App() {
 
       {/* Dashboard */}
       {showDashboard && (
-        <div style={{ marginTop: "40px" }}>
+        <div style={{ marginTop: "50px" }}>
           <h2>Analytics Dashboard</h2>
 
-          {/* 🔎 Search */}
+          {/* Search */}
           <input
             type="text"
             placeholder="Search by URL or short code..."
@@ -145,7 +164,7 @@ function App() {
             }}
           />
 
-          <table border="1" style={{ margin: "0 auto" }}>
+          <table border="1" style={{ margin: "0 auto", width: "80%" }}>
             <thead>
               <tr>
                 <th>Original URL</th>
@@ -199,7 +218,6 @@ function App() {
                         Delete
                       </button>
                     </td>
-
                   </tr>
                 ))}
             </tbody>
