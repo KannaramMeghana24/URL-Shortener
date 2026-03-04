@@ -108,10 +108,7 @@ function App() {
           {loading ? "Processing..." : "Shorten"}
         </button>
 
-        <button
-          onClick={fetchUrls}
-          style={{ marginLeft: "10px" }}
-        >
+        <button onClick={fetchUrls} style={{ marginLeft: "10px" }}>
           View Analytics
         </button>
       </div>
@@ -188,8 +185,9 @@ function App() {
                     </td>
 
                     <td>
+                      {/* 🔥 FIXED REDIRECT */}
                       <a
-                        href={`${API}/${item.shortCode}`}
+                        href={`https://url-shortener-backend-pme4.onrender.com/${item.shortCode}`}
                         target="_blank"
                         rel="noreferrer"
                       >
@@ -218,6 +216,7 @@ function App() {
                         Delete
                       </button>
                     </td>
+
                   </tr>
                 ))}
             </tbody>
