@@ -88,7 +88,7 @@ Mongoose
 
 ### Deployment
 
-Vercel (Frontend)
+Vercel (Frontend),
 Render (Backend)
 
 ---
