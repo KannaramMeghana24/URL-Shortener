@@ -71,19 +71,19 @@ Users can remove links from the system directly from the dashboard.
 
 ### Frontend
 
-React
-Axios
-Vite
-CSS
+React,
+Axios,
+Vite,
+CSS,
 
 ### Backend
 
-Node.js
+Node.js,
 Express.js
 
 ### Database
 
-MongoDB Atlas
+MongoDB Atlas,
 Mongoose
 
 ### Deployment
