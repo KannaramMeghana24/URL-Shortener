@@ -5,33 +5,53 @@ require("dotenv").config();
 
 const app = express();
 
+// ==============================
+// CORS Configuration (IMPORTANT)
+// ==============================
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173", // Local development
+      "https://url-shortener-kappa-smoky.vercel.app" // Vercel frontend
+    ],
+    methods: ["GET", "POST", "DELETE"],
+    credentials: true
+  })
+);
+
 // Middleware
-app.use(cors());
 app.use(express.json());
 
-// Health route
+// ==============================
+// Health Route
+// ==============================
 app.get("/", (req, res) => {
   res.send("URL Shortener Backend is running 🚀");
 });
 
-// Test route
+// Test Route
 app.get("/test", (req, res) => {
   res.send("API routes working");
 });
 
+// ==============================
 // Routes
+// ==============================
 const urlRoutes = require("./routes/urlRoutes");
 app.use("/", urlRoutes);
 
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI)
-.then(() => {
-  console.log("MongoDB Connected");
+// ==============================
+// MongoDB Connection + Server
+// ==============================
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("MongoDB Connected");
 
-  const PORT = process.env.PORT || 5000;
+    const PORT = process.env.PORT || 5000;
 
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
-})
-.catch((err) => console.log(err));
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+  })
+  .catch((err) => console.log(err));
