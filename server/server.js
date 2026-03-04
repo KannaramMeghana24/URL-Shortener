@@ -11,22 +11,30 @@ app.use(cors({
 }));
 app.use(express.json());
 
-// Root Route (for Render test)
+// Root Route (health check)
 app.get("/", (req, res) => {
   res.send("URL Shortener Backend is running 🚀");
 });
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log("MongoDB Error:", err));
-
 // Routes
 app.use("/", require("./routes/urlRoutes"));
 
-// Server Port
-const PORT = process.env.PORT || 5000;
+// MongoDB Connection
+const startServer = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("MongoDB Connected");
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+    const PORT = process.env.PORT || 5000;
+
+    app.listen(PORT, () => {
+      console.log(`Server running on port ${PORT}`);
+    });
+
+  } catch (error) {
+    console.error("MongoDB connection failed:");
+    console.error(error);
+  }
+};
+
+startServer();
