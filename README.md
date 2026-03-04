@@ -1,109 +1,99 @@
-# URL Shortener
-A **full-stack URL Shortening Web Application** that converts long URLs into short, shareable links and tracks analytics such as click counts and creation time.
-The application also supports **custom aliases**, **URL management**, and a simple **analytics dashboard** for monitoring shortened links.
-This project demonstrates a complete **MERN-style architecture** with a modern frontend and a scalable backend deployed on cloud platforms.
+### URL Shortener
 
-# Live Demo
+A full-stack URL Shortening Web Application that converts long URLs into short, shareable links and tracks analytics such as click counts and creation time.
 
-### Frontend
+The application also supports custom aliases, URL management, and a simple analytics dashboard for monitoring shortened links.
 
+This project demonstrates a complete MERN-style architecture with a modern frontend and a scalable backend deployed on cloud platforms.
+
+---
+
+### Live Demo
+
+Frontend
 https://url-shortener-kappa-smoky.vercel.app
 
-### Backend API
-
+Backend API
 https://url-shortener-backend-pme4.onrender.com
 
+---
 
-# Features
+### Features
 
-### 🔹 URL Shortening
+#### URL Shortening
 
 Users can convert long URLs into short links that are easier to share.
 
-
-
-### 🔹 Custom Alias Support
+#### Custom Alias Support
 
 Users can create their own custom short code.
 
-
-
-### 🔹 Analytics Dashboard
+#### Analytics Dashboard
 
 The application includes a dashboard that displays:
 
-* Original URL
-* Short Code
-* Number of Clicks
-* Creation Date
-* Delete Option
+Original URL
+Short Code
+Number of Clicks
+Creation Date
+Delete Option
 
 This helps users track how many times a link has been accessed.
 
+#### Click Tracking
 
+Every time a shortened link is opened, the backend increments the click count stored in the database.
 
-### 🔹 Click Tracking
+This enables basic link analytics.
 
-Every time a shortened link is opened, the backend increments the **click count** stored in the database.
-
-This enables basic **link analytics**.
-
-
-
-### 🔹 Search Functionality
+#### Search Functionality
 
 Users can search links in the analytics dashboard using:
 
-* Original URL
-* Short Code
+Original URL
+Short Code
 
-
-
-### 🔹 URL Deletion
+#### URL Deletion
 
 Users can remove links from the system directly from the dashboard.
 
+---
 
+### How the System Works
 
-# How the System Works
+User Enters Long URL
+Frontend Sends API Request
+Backend Generates Short Code
+MongoDB Stores Data
+Redirect System
 
-### User Enters Long URL
-### Frontend Sends API Request
-### Backend Generates Short Code
-### MongoDB Stores Data
-### Redirect System
+---
 
+### Tech Stack
 
+Frontend
+React
+Axios
+Vite
+CSS
 
-# Tech Stack
+Backend
+Node.js
+Express.js
 
-### Frontend
+Database
+MongoDB Atlas
+Mongoose
 
-* React
-* Axios
-* Vite
-* CSS
+Deployment
+Vercel (Frontend)
+Render (Backend)
 
-### Backend
+---
 
-* Node.js
-* Express.js
+### Installation and Setup
 
-### Database
-
-* MongoDB Atlas
-* Mongoose
-
-### Deployment
-
-* Vercel (Frontend)
-* Render (Backend)
-
-
-
-# Installation & Setup
-
-## Clone Repository
+Clone Repository
 
 ```
 git clone https://github.com/KannaramMeghana24/URL-Shortener.git
@@ -115,7 +105,7 @@ cd URL-Shortener
 
 ---
 
-# Run Backend
+### Run Backend
 
 ```
 cd server
@@ -136,7 +126,7 @@ http://localhost:5000
 
 ---
 
-# Run Frontend
+### Run Frontend
 
 Open new terminal
 
@@ -151,6 +141,3 @@ Frontend runs at
 ```
 http://localhost:5173
 ```
-
----
-
