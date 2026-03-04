@@ -1,6 +1,6 @@
-### URL Shortener
+## URL Shortener
 
-A full-stack URL Shortening Web Application that converts long URLs into short, shareable links and tracks analytics such as click counts and creation time.
+A full-stack URL shortening web application that converts long URLs into short, shareable links and tracks analytics such as click counts and creation time.
 
 The application also supports custom aliases, URL management, and a simple analytics dashboard for monitoring shortened links.
 
@@ -8,103 +8,94 @@ This project demonstrates a complete MERN-style architecture with a modern front
 
 ---
 
-### Live Demo :
+## Live Demo
 
-Frontend -
-
+Frontend
 https://url-shortener-kappa-smoky.vercel.app
 
-Backend API -
-
+Backend API
 https://url-shortener-backend-pme4.onrender.com
 
 ---
 
-### Features :
+## Features
 
-URL Shortening - Users can convert long URLs into short links that are easier to share.
+### URL Shortening
 
-Custom Alias Support - Users can create their own custom short code.
+Users can convert long URLs into short links that are easier to share.
 
-Analytics Dashboard - The application includes a dashboard that displays:
+### Custom Alias Support
+
+Users can create their own custom short code for shortened URLs.
+
+### Analytics Dashboard
+
+The application includes a dashboard that displays:
 
 Original URL
-
 Short Code
-
 Number of Clicks
-
 Creation Date
-
 Delete Option
 
 This helps users track how many times a link has been accessed.
 
-#### Click Tracking : 
+### Click Tracking
 
-Every time a shortened link is opened, the backend increments the click count stored in the database.
+Every time a shortened link is opened, the backend increments the click count stored in the database. This enables basic link analytics.
 
-This enables basic link analytics.
-
-#### Search Functionality :
+### Search Functionality
 
 Users can search links in the analytics dashboard using:
 
 Original URL
 Short Code
 
-#### URL Deletion :
+### URL Deletion
 
 Users can remove links from the system directly from the dashboard.
 
 ---
 
-### How the System Works :
+## How the System Works
 
-User Enters Long URL
-Frontend Sends API Request
-Backend Generates Short Code
-MongoDB Stores Data
-Redirect System
+1. User enters a long URL in the frontend interface.
+2. The frontend sends an API request to the backend.
+3. The backend generates a unique short code.
+4. MongoDB stores the original URL along with the short code and metadata.
+5. When a shortened link is opened, the system redirects the user to the original URL and updates the click count.
 
 ---
 
-### Tech Stack
+## Tech Stack
 
-Frontend:
+### Frontend
 
 React
-
 Axios
-
 Vite
-
 CSS
 
-
-Backend:
+### Backend
 
 Node.js
-
 Express.js
 
-
-Database:
+### Database
 
 MongoDB Atlas
-
 Mongoose
 
+### Deployment
 
-Deployment:
 Vercel (Frontend)
 Render (Backend)
 
 ---
 
-### Installation and Setup :
+## Installation and Setup
 
-Clone Repository
+### Clone the Repository
 
 ```
 git clone https://github.com/KannaramMeghana24/URL-Shortener.git
@@ -116,20 +107,20 @@ cd URL-Shortener
 
 ---
 
-### Run Backend :
+## Run Backend
 
 ```
 cd server
 npm install
 ```
 
-Run server
+Start the server:
 
 ```
 npm start
 ```
 
-Server runs at
+Backend runs at:
 
 ```
 http://localhost:5000
@@ -137,9 +128,9 @@ http://localhost:5000
 
 ---
 
-### Run Frontend :
+## Run Frontend
 
-Open new terminal
+Open a new terminal:
 
 ```
 cd client
@@ -147,7 +138,7 @@ npm install
 npm run dev
 ```
 
-Frontend runs at
+Frontend runs at:
 
 ```
 http://localhost:5173
