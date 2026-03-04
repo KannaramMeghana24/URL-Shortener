@@ -1,13 +1,9 @@
-# 🔗 URL Shortener
-
+# URL Shortener
 A **full-stack URL Shortening Web Application** that converts long URLs into short, shareable links and tracks analytics such as click counts and creation time.
 The application also supports **custom aliases**, **URL management**, and a simple **analytics dashboard** for monitoring shortened links.
-
 This project demonstrates a complete **MERN-style architecture** with a modern frontend and a scalable backend deployed on cloud platforms.
 
----
-
-# 🌐 Live Demo
+# Live Demo
 
 ### Frontend
 
@@ -17,21 +13,20 @@ https://url-shortener-kappa-smoky.vercel.app
 
 https://url-shortener-backend-pme4.onrender.com
 
----
 
-# 🚀 Features
+# Features
 
 ### 🔹 URL Shortening
 
 Users can convert long URLs into short links that are easier to share.
 
----
+
 
 ### 🔹 Custom Alias Support
 
 Users can create their own custom short code.
 
----
+
 
 ### 🔹 Analytics Dashboard
 
@@ -45,7 +40,7 @@ The application includes a dashboard that displays:
 
 This helps users track how many times a link has been accessed.
 
----
+
 
 ### 🔹 Click Tracking
 
@@ -53,7 +48,7 @@ Every time a shortened link is opened, the backend increments the **click count*
 
 This enables basic **link analytics**.
 
----
+
 
 ### 🔹 Search Functionality
 
@@ -62,25 +57,25 @@ Users can search links in the analytics dashboard using:
 * Original URL
 * Short Code
 
----
+
 
 ### 🔹 URL Deletion
 
 Users can remove links from the system directly from the dashboard.
 
----
 
-# 🧠 How the System Works
 
-### 1️⃣ User Enters Long URL
-### 2️⃣ Frontend Sends API Request
-### 3️⃣ Backend Generates Short Code
-### 4️⃣ MongoDB Stores Data
-### 5️⃣ Redirect System
+# How the System Works
 
----
+### User Enters Long URL
+### Frontend Sends API Request
+### Backend Generates Short Code
+### MongoDB Stores Data
+### Redirect System
 
-# 🛠️ Tech Stack
+
+
+# Tech Stack
 
 ### Frontend
 
@@ -104,11 +99,11 @@ Users can remove links from the system directly from the dashboard.
 * Vercel (Frontend)
 * Render (Backend)
 
----
 
-# ⚙️ Installation & Setup
 
-## 1️⃣ Clone Repository
+# Installation & Setup
+
+## Clone Repository
 
 ```
 git clone https://github.com/KannaramMeghana24/URL-Shortener.git
@@ -120,7 +115,7 @@ cd URL-Shortener
 
 ---
 
-# ▶️ Run Backend
+# Run Backend
 
 ```
 cd server
@@ -141,7 +136,7 @@ http://localhost:5000
 
 ---
 
-# ▶️ Run Frontend
+# Run Frontend
 
 Open new terminal
 
