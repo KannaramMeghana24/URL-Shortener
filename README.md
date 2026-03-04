@@ -8,58 +8,58 @@ This project demonstrates a complete MERN-style architecture with a modern front
 
 ---
 
-### Live Demo
+### Live Demo :
 
-Frontend
+Frontend -
+
 https://url-shortener-kappa-smoky.vercel.app
 
-Backend API
+Backend API -
+
 https://url-shortener-backend-pme4.onrender.com
 
 ---
 
-### Features
+### Features :
 
-#### URL Shortening
+URL Shortening - Users can convert long URLs into short links that are easier to share.
 
-Users can convert long URLs into short links that are easier to share.
+Custom Alias Support - Users can create their own custom short code.
 
-#### Custom Alias Support
-
-Users can create their own custom short code.
-
-#### Analytics Dashboard
-
-The application includes a dashboard that displays:
+Analytics Dashboard - The application includes a dashboard that displays:
 
 Original URL
+
 Short Code
+
 Number of Clicks
+
 Creation Date
+
 Delete Option
 
 This helps users track how many times a link has been accessed.
 
-#### Click Tracking
+#### Click Tracking : 
 
 Every time a shortened link is opened, the backend increments the click count stored in the database.
 
 This enables basic link analytics.
 
-#### Search Functionality
+#### Search Functionality :
 
 Users can search links in the analytics dashboard using:
 
 Original URL
 Short Code
 
-#### URL Deletion
+#### URL Deletion :
 
 Users can remove links from the system directly from the dashboard.
 
 ---
 
-### How the System Works
+### How the System Works :
 
 User Enters Long URL
 Frontend Sends API Request
@@ -81,11 +81,13 @@ Vite
 
 CSS
 
+
 Backend:
 
 Node.js
 
 Express.js
+
 
 Database:
 
@@ -93,13 +95,14 @@ MongoDB Atlas
 
 Mongoose
 
+
 Deployment:
 Vercel (Frontend)
 Render (Backend)
 
 ---
 
-### Installation and Setup
+### Installation and Setup :
 
 Clone Repository
 
@@ -113,7 +116,7 @@ cd URL-Shortener
 
 ---
 
-### Run Backend
+### Run Backend :
 
 ```
 cd server
@@ -134,7 +137,7 @@ http://localhost:5000
 
 ---
 
-### Run Frontend
+### Run Frontend :
 
 Open new terminal
 
